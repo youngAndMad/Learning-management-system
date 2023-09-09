@@ -1,0 +1,5 @@
+github.com/sloonz/go-mime-message v0.0.0-20210417175330-cb2e834a9b3b h1:yzAB0kQ/6jGaAOMmyylzH2SZp7g7vomILqkxAs4ghqw=
+github.com/sloonz/go-mime-message v0.0.0-20210417175330-cb2e834a9b3b/go.mod h1:G3uvxOtJJl6pu9Bl9l0JkHIsn/9qBVSBd5iEQZVI7ic=
+github.com/sloonz/go-qprintable v0.0.0-20160203160305-775b3a4592d5/go.mod h1:rvsMTVl5yyd7liGH3cxu5eRjfNcC1WkSKe4HBSZ3ZA4=
+github.com/sloonz/go-qprintable v0.0.0-20210417175225-715103f9e6eb h1:T+USeSgAg9MysHPeOQ2W3KAuBQHVZzG0XMHyfHN88Yg=
+github.com/sloonz/go-qprintable v0.0.0-20210417175225-715103f9e6eb/go.mod h1:WKd1iQMtoZdaS9rlKDPprxWJoan2hkQA9BcGt+oxezs=
