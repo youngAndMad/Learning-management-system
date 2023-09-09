@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(model);
     }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.delete(this.findById(id));
+    }
 }
