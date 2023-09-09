@@ -1,7 +1,9 @@
 package backend.userservice.utils;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum Role {
     USER(0L),
