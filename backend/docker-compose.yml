@@ -1,5 +1,12 @@
 version: '3'
 services:
+  mail-sender-go:
+    image: daneker/mail-sender-go
+    container_name: mail-sender
+    ports:
+      - "8082:8082"
+    environment:
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
   mongodb:
     image: mongo
     container_name: mongo_db
