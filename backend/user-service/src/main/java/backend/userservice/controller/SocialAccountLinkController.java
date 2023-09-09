@@ -30,8 +30,7 @@ public class SocialAccountLinkController {
             @RequestParam("user_id") Long userId,
             @RequestBody SocialAccountLinkDTO dto
     ) {
-        return
-        ResponseEntity.ok(
+        return ResponseEntity.ok(
                 userService.addSocialLink(dto, userId)
         );
     }
