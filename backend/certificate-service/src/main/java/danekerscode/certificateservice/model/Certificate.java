@@ -15,4 +15,10 @@ public class Certificate {
     private String name;
     private LocalDate time;
     private String owner;
+
+    public Certificate(String name, String owner) {
+        this.name = name;
+        this.time = LocalDate.now();
+        this.owner = owner;
+    }
 }

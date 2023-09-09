@@ -21,25 +21,27 @@ public class CertificateServiceImpl implements CertificateService {
     @Override
     public Certificate generate(CertificateDTO dto) {
         generatePDF(dto); // todo send to email
-        return null;
+
+        var certificate = new Certificate(dto.name(),dto.owner());
+
+        return certificateRepository.save(certificate);
     }
 
     @SneakyThrows
     private static void generatePDF(CertificateDTO dto) {
-        Document document = new Document();
+        var document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("new_test.pdf"));
 
         document.open();
 
-        // Create a paragraph to group text elements
-        Paragraph paragraph = new Paragraph();
+        var paragraph = new Paragraph();
 
-        Chunk title = new Chunk("Certificate of Achievement", FontFactory.getFont(FontFactory.COURIER, 36));
+        var title = new Chunk("Certificate of Achievement", FontFactory.getFont(FontFactory.COURIER, 36));
         paragraph.add(title);
 
-        Chunk name = new Chunk(dto.name(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
-        Chunk owner = new Chunk(dto.owner(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
-        Chunk completeCourse = new Chunk("Successfully completed the course", FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
+        var name = new Chunk(dto.name(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
+        var owner = new Chunk(dto.owner(), FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
+        var completeCourse = new Chunk("Successfully completed the course", FontFactory.getFont(FontFactory.TIMES_ROMAN, 24));
 
         paragraph.add(name);
         paragraph.add(owner);
