@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <form id="edit-form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="first_name">Name</label>
+        <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Last" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="last_name">Surname</label>
+        <input type="text" name="last_name" class="form-control" id="last_name" placeholder="First Last" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <button class="btn btn-success">Submit</button>
+      </div>
+    </div>
+
+    <button class="btn btn-danger" (click)="deleteAccount()">Delete account</button>
+
+  </form>
+
+</div>

@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Role} from "../domain/Role";
+import {Role} from "../domain/enum/Role";
 import {Observable} from "rxjs";
 import {API} from "../config/config";
 

@@ -22,6 +22,19 @@
         <li class="nav-item">
           <a href="#contact" class="nav-link">Contact</a>
         </li>
+        <li>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="doSomething()">My profile</button>
+            <button mat-menu-item (click)="doSomethingElse()">My courses</button>
+          </mat-menu>
+
+          <button [matMenuTriggerFor]="menu" class="profile_icon">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+
+        </li>
+
       </ul>
     </div>
   </div>
