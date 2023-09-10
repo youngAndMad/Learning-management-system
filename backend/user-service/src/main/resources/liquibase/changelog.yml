@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      comment: create-tables
+      author: daneker
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+
+        - createTable:
+            tableName: social_account_link
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: link
+                  type: VARCHAR(255)
+              - column:
+                  name: type
+                  type: VARCHAR(25)
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_USER_ID_ON_SOCIAL_ACCOUNT_LINK
+                    references: users(id)
+
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: role_name
+                  type: VARCHAR(255)
+
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_USER_ID_ON_ROLES
+                    references: users(id)
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_ROLE_ID_ON_ROLES
+                    references: role(id)
+
+  - changeSet:
+      id: 2
+      author: daneker
+      comment: insert-roles-data
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: role_name
+                  value: USER
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: role_name
+                  value: ADMIN
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: role_name
+                  value: LECTURER
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: role_name
+                  value: MANAGER

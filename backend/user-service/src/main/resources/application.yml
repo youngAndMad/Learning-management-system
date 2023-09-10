@@ -1,4 +1,6 @@
 spring:
+  liquibase:
+    change-log: liquibase/changelog.yml
   application:
     name: user-service
   datasource:
@@ -8,7 +10,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/lms_user
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 server:
   port: 8082
   servlet:

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "role")
 public class RoleEntity {
 
     @Id
@@ -18,5 +19,6 @@ public class RoleEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "role_name")
     private Role role; // FIXME: 9/9/2023 add unique constraints during migration
 }
