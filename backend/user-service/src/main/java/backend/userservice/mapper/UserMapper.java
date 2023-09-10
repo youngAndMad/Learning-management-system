@@ -13,11 +13,11 @@ import java.util.Set;
 @Mapper
 public interface UserMapper {
 
-    @Mapping(target = "roles" , expression = "java(defaultRoles())")
-    @Mapping(target = "id" , ignore = true)
+    @Mapping(target = "roles", expression = "java(defaultRoles())")
+    @Mapping(target = "id", ignore = true)
     User toModel(UserDTO dto);
 
-    default Set<RoleEntity> defaultRoles(){
+    default Set<RoleEntity> defaultRoles() {
         return new HashSet<>(Set.of(new RoleEntity(
                 Role.USER.getDB_ID(), Role.USER
         )));
