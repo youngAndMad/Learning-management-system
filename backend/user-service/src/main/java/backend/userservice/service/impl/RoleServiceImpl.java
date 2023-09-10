@@ -5,6 +5,7 @@ import backend.userservice.repository.RoleRepository;
 import backend.userservice.service.RoleService;
 import backend.userservice.service.UserService;
 import backend.userservice.utils.Role;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
     @Override
-    public void assign(Long userId, Role role) {
+    public void assign(Long userId,@NonNull Role role) {
         var user = userService.findById(userId);
 
         if (!user.canAssign(role)) {
