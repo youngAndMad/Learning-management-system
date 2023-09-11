@@ -56,6 +56,7 @@
         <module>api-gateway</module>
         <module>certificate-service</module>
         <module>user-service</module>
+        <module>course-service</module>
     </modules>
 
     <build>

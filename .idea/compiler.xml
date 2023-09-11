@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
+        <module name="course-service" />
       </profile>
       <profile name="Annotation profile for Archetype - backend" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -30,6 +31,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="backend" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="certificate-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="course-service" options="-parameters" />
       <module name="discovery-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="user-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
     </option>
