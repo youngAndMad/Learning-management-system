@@ -36,4 +36,10 @@ public class Course  {
     )
     private List<Attachment> attachments;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "course"
+    )
+    private List<Feedback> feedbacks;
+
 }

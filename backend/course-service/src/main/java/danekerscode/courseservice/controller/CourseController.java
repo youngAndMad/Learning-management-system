@@ -35,9 +35,7 @@ public class CourseController {
             @RequestBody CourseDTO courseDTO
     ) {
         return ResponseEntity
-                .ok(
-                        courseService.save(courseDTO)
-                );
+                .ok(courseService.save(courseDTO));
     }
 
 

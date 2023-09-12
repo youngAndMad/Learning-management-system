@@ -1,5 +1,6 @@
 package danekerscode.courseservice.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public record CourseDTO(
@@ -7,6 +8,7 @@ public record CourseDTO(
         String description,
         String header,
         List<LessonDTO> lessons,
-        List<OutlineDTO> outlines
+        List<OutlineDTO> outlines,
+        BigDecimal price
 ) {
 }
