@@ -1,1 +1,1 @@
-package quizservice
+package quiz_service
