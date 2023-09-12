@@ -23,21 +23,23 @@ public class MinIOController {
             @RequestParam AttachmentSource source,
             @RequestParam String name
     ) {
-        minIOService.putObject(new FileOperationDTO(target,source,name),file);
+        minIOService.putObject(new FileOperationDTO(target, source, name), file);
     }
 
     @GetMapping("/download")
     void downloadFile(
-            @RequestBody FileOperationDTO dto,
+            @RequestParam String name,
+            @RequestParam Long target,
+            @RequestParam AttachmentSource source,
             HttpServletResponse response
     ) {
-        minIOService.getObject(dto, response);
+        minIOService.getObject(new FileOperationDTO(target, source, name), response);
     }
 
     @PatchMapping
     void deleteObject(
             @RequestBody FileOperationDTO dto
-    ){
+    ) {
         minIOService.removeObject(dto);
     }
 }
