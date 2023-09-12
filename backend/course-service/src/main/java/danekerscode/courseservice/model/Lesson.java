@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Lesson   {
+public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +21,9 @@ public class Lesson   {
     @JoinColumn
     private Course course;
 
-    private String task;
+    private String plan;
     private String data;
+    private String conclusion;
 
     @OneToMany(
             cascade = CascadeType.ALL
