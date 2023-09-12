@@ -2,6 +2,7 @@ package danekerscode.courseservice.service.impl;
 
 import danekerscode.courseservice.dto.FileOperationDTO;
 import danekerscode.courseservice.service.MinIOService;
+import danekerscode.courseservice.utils.AttachmentSource;
 import io.minio.*;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class MinIOServiceImpl implements MinIOService {
 
     @Override
     public void putObject(FileOperationDTO dto, MultipartFile file) {
-        var bucketName = toBucketName(dto);
+        var bucketName = toBucketName(dto.source(),dto.target());
         checkBucketExisting(bucketName);
         try {
             var in = new ByteArrayInputStream(file.getBytes());
@@ -38,7 +39,7 @@ public class MinIOServiceImpl implements MinIOService {
 
         var minioInputStream = minioClient.getObject(
                 GetObjectArgs.builder()
-                        .bucket(toBucketName(dto))
+                        .bucket(toBucketName(dto.source(),dto.target()))
                         .object(dto.name())
                         .build()
         );
@@ -59,6 +60,38 @@ public class MinIOServiceImpl implements MinIOService {
 
     }
 
+    @Override
+    public void removeBucket(Long target, AttachmentSource source) {
+        var bucketName = toBucketName(source,target);
+
+        try {
+            minioClient.removeBucket(
+                    RemoveBucketArgs.builder()
+                            .bucket(bucketName)
+                            .build()
+            );
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public void removeObject(FileOperationDTO dto) {
+        var bucketName = toBucketName(dto.source(),dto.target());
+        try {
+            minioClient.removeObject(
+                    RemoveObjectArgs.builder()
+                            .bucket(bucketName)
+                            .object(dto.name())
+                            .build()
+            );
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
     @SneakyThrows
     private void checkBucketExisting(String bucketName) {
         if (minioClient.bucketExists(
@@ -74,7 +107,7 @@ public class MinIOServiceImpl implements MinIOService {
         }
     }
 
-    private String toBucketName(FileOperationDTO dto) {
-        return dto.source().name().concat("_") + dto.target();
+    private String toBucketName(AttachmentSource source,Long target) {
+        return source.name().concat("_") + target;
     }
 }
