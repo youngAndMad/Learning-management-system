@@ -29,7 +29,7 @@ public class Course  {
             cascade = CascadeType.ALL,
             mappedBy = "course"
     )
-    private List<Outline> outline;
+    private List<Outline> outlines;
 
     @OneToMany(
             cascade = CascadeType.ALL

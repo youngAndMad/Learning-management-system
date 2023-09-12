@@ -11,10 +11,10 @@ import org.mapstruct.MappingTarget;
 public interface LessonMapper {
 
     @Mapping(target = "id" , ignore = true)
+    @Mapping(target = "name" , source = "dto.name")
     Lesson toModel(LessonDTO dto, Course course);
 
     void update(LessonDTO dto, @MappingTarget Lesson lesson);
-
 
 }
 

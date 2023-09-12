@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
-        <module name="course-service" />
       </profile>
       <profile name="Annotation profile for Archetype - backend" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -20,9 +19,10 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.3.Final/mapstruct-processor-1.5.3.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.3.Final/mapstruct-1.5.3.Final.jar" />
         </processorPath>
-        <module name="discovery-service" />
+        <module name="course-service" />
         <module name="certificate-service" />
         <module name="user-service" />
+        <module name="discovery-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -31,7 +31,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="backend" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="certificate-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
-      <module name="course-service" options="-parameters" />
+      <module name="course-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="discovery-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
       <module name="user-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
     </option>
