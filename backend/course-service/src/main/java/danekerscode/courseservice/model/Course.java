@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Course {
+public class Course  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +30,10 @@ public class Course {
             mappedBy = "course"
     )
     private List<Outline> outline;
+
+    @OneToMany(
+            cascade = CascadeType.ALL
+    )
+    private List<Attachment> attachments;
 
 }
