@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {API} from "../config/config";
+import {SocialAccountLinkDTO} from "../domain/dto/socialAccountLink.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,10 @@ export class SocialAccountLinkService {
   }
 
   manage(
-    req: any
+    socialAccountLinkDTO: SocialAccountLinkDTO
   ): Observable<any> {
     return this.http
-      .post(`${API}/social-account-link`, req)
+      .post(`${API}/social-account-link`, socialAccountLinkDTO)
   }
 
 }

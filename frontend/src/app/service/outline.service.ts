@@ -1,27 +1,28 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {OutlineDTO} from "../domain/dto/outline.dto";
 import {API} from "../config/config";
-import {UserDTO} from "../domain/dto/user.dto";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class OutlineService {
 
   private http = inject(HttpClient)
 
-  register(
-    userDTO: UserDTO
+  update(
+    id: number,
+    dto: OutlineDTO
   ): Observable<any> {
     return this.http
-      .post(`${API}/user/`, userDTO)
+      .patch(`${API}/outline/` + id, dto)
   }
 
   delete(
     id: number
   ): Observable<any> {
-    return this.http
-      .delete(`${API}/user/${id}`)
+    return this.http.delete(`${API}/outline/` + id);
   }
+
 }

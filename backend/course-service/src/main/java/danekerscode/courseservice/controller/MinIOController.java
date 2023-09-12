@@ -36,7 +36,7 @@ public class MinIOController {
         minIOService.getObject(new FileOperationDTO(target, source, name), response);
     }
 
-    @PatchMapping
+    @PatchMapping("delete")
     void deleteObject(
             @RequestBody FileOperationDTO dto
     ) {

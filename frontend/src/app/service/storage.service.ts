@@ -15,7 +15,7 @@ export class StorageService {
     req: any
   ): Observable<any> {
     return this
-      .http.patch(`${API}/storage`, req)
+      .http.patch(`${API}/storage/delete`, req)
   }
 
   upload(
