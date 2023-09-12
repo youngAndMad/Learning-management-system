@@ -1,0 +1,75 @@
+version: '3'
+services:
+  postgres_lms_course:
+    image: postgres:15.1
+    container_name: postgres_lms_course
+    environment:
+      POSTGRES_DB: lms_course
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+  minio:
+    image: quay.io/minio/minio
+    container_name: minio
+    volumes:
+      - ./data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: 'minioadmin'
+      MINIO_ROOT_PASSWORD: 'minioadmin'
+      MINIO_ADDRESS: ':9000'
+      MINIO_CONSOLE_ADDRESS: ':9001'
+    command: minio server /data
+
+        #  mail-sender-go:
+#    image: daneker/mail-sender-go
+#    container_name: mail-sender
+#    ports:
+#      - "8082:8082"
+#    environment:
+#      SMTP_PASSWORD: ${SMTP_PASSWORD}
+#  mongodb:
+#    image: mongo
+#    container_name: mongo_db
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongo:/data
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: daneker
+#      MONGO_INITDB_ROOT_PASSWORD: daneker
+#  mongo-express:
+#    image: mongo-express
+#    container_name: mongo_express
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: daneker
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: daneker
+#      ME_CONFIG_MONGODB_SERVER: mongodb
+#  kc_db:
+#    image: postgres:13.5
+#    environment:
+#      POSTGRES_HOST_AUTH_METHOD: trust
+#      POSTGRES_USER: my_admin
+#      POSTGRES_PASSWORD: my_password
+#      POSTGRES_DB: keycloak_db
+#    ports:
+#      - "5432:5432"
+#  kc:
+#    image: jboss/keycloak:11.0.2
+#    environment:
+#      DB_VENDOR: POSTGRES
+#      DB_ADDR: kc_db
+#      DB_DATABASE: keycloak_db
+#      DB_USER: my_admin
+#      DB_SCHEMA: public
+#      DB_PASSWORD: my_password
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - kc_db
+volumes:
+  mongo: {}

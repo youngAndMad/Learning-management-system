@@ -20,6 +20,7 @@ export class UserService {
   delete(
     id:number
   ):Observable<any>{
-    return this.http.delete(`${API}/user/${id}`)
+    return this.http
+      .delete(`${API}/user/${id}`)
   }
 }
