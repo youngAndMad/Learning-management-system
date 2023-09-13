@@ -9,3 +9,8 @@ type Answer interface {
 	Save(isCorrect bool, questionId int, value string) (int, error)
 	Update(isCorrect bool, value string, answerId int) (int error)
 }
+
+type Question interface {
+	DeleteQuestionById(id int) error
+	Save()
+}

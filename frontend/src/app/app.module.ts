@@ -11,6 +11,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { ProfileComponent } from './component/user/profile/profile.component';
 import { EditComponent } from './component/user/edit/edit.component';
 import { HomeComponent } from './component/navigation/home/home.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './component/navigation/home/home.component';
     NavbarComponent,
     ProfileComponent,
     EditComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

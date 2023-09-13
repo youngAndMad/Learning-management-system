@@ -14,6 +14,7 @@ func newAnswerRepository(db *sqlx.DB) *AnswerRepository {
 		db: db,
 	}
 }
+
 func (ansRepo *AnswerRepository) Update(isCorrect bool, value string, answerId int) (int, error) {
 	query := `
 		UPDATE answers
