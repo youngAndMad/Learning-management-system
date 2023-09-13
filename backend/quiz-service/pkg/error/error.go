@@ -7,6 +7,7 @@ import (
 )
 
 var (
+	ErrAnswerNotExists   = errors.New("answer not found")
 	ErrQuizNotExists     = errors.New("quiz not found")
 	ErrQuestionNotExists = errors.New("question not found")
 )
