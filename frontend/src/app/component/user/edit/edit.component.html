@@ -1,16 +1,72 @@
-<div class="wrapper">
-  <form id="edit-form">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="first_name">Name</label>
-        <input type="text" name="first_name" class="form-control" id="first_name" placeholder="First Last" required>
+<div class="wrapper container">
+  <div class="wrapper__inner">
+
+    <div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">Name</label>
+          <input type="text"
+                 name="first_name"
+                 class="form-control"
+                 id="first_name"
+                 disabled
+                 [(ngModel)]="user.name"
+          >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="last_name">Surname</label>
+          <input type="text"
+                 name="last_name"
+                 class="form-control"
+                 id="last_name"
+                 disabled
+                 [(ngModel)]="user.surname"
+          >
+        </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="last_name">Surname</label>
-        <input type="text" name="last_name" class="form-control" id="last_name" placeholder="First Last" required>
-      </div>
+
+    <div class="form-row" id="social_links_form_block">
+      <h2>Social account links</h2>
+      <form [formGroup]="socialLinksForm" class="social_links_form">
+        <div class="horiz">
+          <i class='icon fa fa-github'></i>
+          <input type="text" class="form-control" formControlName="githubLink">
+          <a *ngIf="socialLinksForm.get('githubLink')?.value"
+             (click)="deleteSocialAccountLink(findLink(SocialAccountLinkType.GITHUB)!.id)">
+            <i class='icon fa fa-remove'></i>
+          </a>
+          <div *ngIf="socialLinksForm.get('githubLink')?.hasError('pattern') && socialLinksForm.get('githubLink')?.touched">
+            <p class="error-message">Invalid GitHub link format.</p>
+          </div>
+        </div>
+        <div class="horiz">
+          <i class='icon fa fa-twitter'></i>
+          <input type="text" class="form-control" formControlName="twitterLink">
+          <a *ngIf="socialLinksForm.get('twitterLink')?.value"
+             (click)="deleteSocialAccountLink(findLink(SocialAccountLinkType.TWITTER)!.id)">
+            <i class='icon fa fa-remove'></i>
+          </a>
+          <div *ngIf="socialLinksForm.get('twitterLink')?.hasError('pattern') && socialLinksForm.get('twitterLink')?.touched">
+            <p class="error-message">Invalid Twitter link format.</p>
+          </div>
+        </div>
+        <div class="horiz">
+          <i class='icon fa fa-linkedin'></i>
+          <input type="text" class="form-control" formControlName="linkedinLink">
+          <a *ngIf="socialLinksForm.get('linkedinLink')?.value"
+             (click)="deleteSocialAccountLink(findLink(SocialAccountLinkType.LINKEDIN)!.id)">
+            <i class='icon fa fa-remove'></i>
+          </a>
+          <div *ngIf="socialLinksForm.get('linkedinLink')?.hasError('pattern') && socialLinksForm.get('linkedinLink')?.touched">
+            <p class="error-message">Invalid LinkedIn link format.</p>
+          </div>
+        </div>
+      </form>
+
+
     </div>
 
     <div class="form-row">
@@ -20,7 +76,5 @@
     </div>
 
     <button class="btn btn-danger" (click)="deleteAccount()">Delete account</button>
-
-  </form>
-
+  </div>
 </div>

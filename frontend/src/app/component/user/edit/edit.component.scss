@@ -1,0 +1,31 @@
+.wrapper__inner {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-content: center
+}
+
+input {
+  width: 100%;
+}
+
+.icon {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.horiz {
+  display: flex;
+}
+
+#social_links_form_block {
+  & h2 {
+    padding: 10px 0 0 50px;
+  }
+}
+
+.social_links_form {
+  & div {
+    padding-top: 15px;
+  }
+}

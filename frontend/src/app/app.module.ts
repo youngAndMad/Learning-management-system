@@ -12,6 +12,7 @@ import { ProfileComponent } from './component/user/profile/profile.component';
 import { EditComponent } from './component/user/edit/edit.component';
 import { HomeComponent } from './component/navigation/home/home.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 package backend.userservice.model;
 
 import backend.userservice.utils.SocialAccountType;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +25,17 @@ public class SocialAccountLink {
 
     @ManyToOne
     @JoinColumn
+    @JsonProperty("user_id")
     private User user;
 
     public SocialAccountLink(String link, SocialAccountType type,User user) {
         this.link = link;
         this.type = type;
         this.user = user;
+    }
+
+    @JsonGetter("user_id")
+    public Long getUserId(){
+        return this.user.getId();
     }
 }
