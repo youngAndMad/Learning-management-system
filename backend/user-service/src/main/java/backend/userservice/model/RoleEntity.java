@@ -20,5 +20,5 @@ public class RoleEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
-    private Role role; // FIXME: 9/9/2023 add unique constraints during migration
+    private Role role;
 }

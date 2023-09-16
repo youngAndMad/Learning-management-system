@@ -33,10 +33,10 @@ export class EditComponent {
 
   deleteAccount() {
     this.userService.delete(this.user.id)
-      .subscribe(res => {
+      .subscribe(() => {
           this.router.navigate(['/home'])
             .then(() => console.log('redirecting to home page'))
-        }
+        },
       )
   }
 
@@ -51,9 +51,9 @@ export class EditComponent {
   }
 
   submit() {
-    this.submitSocialLink('githubLink' , SocialAccountLinkType.GITHUB)
-    this.submitSocialLink('twitterLink' , SocialAccountLinkType.TWITTER)
-    this.submitSocialLink('linkedinLink' , SocialAccountLinkType.LINKEDIN)
+    this.submitSocialLink('githubLink', SocialAccountLinkType.GITHUB)
+    this.submitSocialLink('twitterLink', SocialAccountLinkType.TWITTER)
+    this.submitSocialLink('linkedinLink', SocialAccountLinkType.LINKEDIN)
   }
 
   private submitSocialLink(controlName: string, linkType: SocialAccountLinkType) {
