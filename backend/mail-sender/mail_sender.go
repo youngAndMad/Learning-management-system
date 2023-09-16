@@ -30,16 +30,16 @@ func main() {
 		emailMessage := requestBody["message"]
 		receiverEmail := requestBody["receiver"]
 
-		m := message.NewMultipartMessage("alternative", "")
-		m.SetHeader("Subject", message.EncodeWord("test"))
+// 		m := message.NewMultipartMessage("alternative", "")
+// 		m.SetHeader("Subject", message.EncodeWord("test"))
 
-		m1 := message.NewTextMessage(qprintable.UnixTextEncoding, bytes.NewBufferString(emailMessage))
-		m1.SetHeader("Content-Type", "text/plain")
-		m.AddPart(m1)
+// 		m1 := message.NewTextMessage(qprintable.UnixTextEncoding, bytes.NewBufferString(emailMessage))
+// 		m1.SetHeader("Content-Type", "text/plain")
+// 		m.AddPart(m1)
 
-		m2 := message.NewBinaryMessage(bytes.NewBufferString("this is some text as attachment."))
-		m2.SetHeader("Content-Type", "application/octet-stream")
-		m.AddPart(m2)
+// 		m2 := message.NewBinaryMessage(bytes.NewBufferString("this is some text as attachment."))
+// 		m2.SetHeader("Content-Type", "application/octet-stream")
+// 		m.AddPart(m2)
 
 		var buf bytes.Buffer
 		buf.ReadFrom(m)
