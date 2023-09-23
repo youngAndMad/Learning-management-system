@@ -1,8 +1,0 @@
-build:
-	@go build -o bin/quiz_service
-
-run: build
-	@./bin/quiz_service
-
-test:
-	@go test -v ./...
