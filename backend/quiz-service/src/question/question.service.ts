@@ -30,8 +30,6 @@ export class QuestionService {
         let question = await this.questionRepository
             .save(plainToClass(Question, questionDTO))
 
-        console.log(question)
-
         let answersPromises = questionDTO.answers.map(
             async (answer) => await this.answerService.create(answer, question)
         );
@@ -42,11 +40,17 @@ export class QuestionService {
         return await this.questionRepository.save(question)
     }
 
+    private async findById(
+        id: number
+    ) {
+        return await this.questionRepository.findOneBy({id})
+    }
+
     async update(
         id: number,
         value: string
     ) {
-        let question = await this.questionRepository.findOneBy({id})
+        let question = await this.findById(id)
 
         if (!question) {
             throw new NotFoundException(`question by id ${id} not found`)
@@ -55,6 +59,31 @@ export class QuestionService {
         question.value = value
 
         return this.questionRepository.save(question)
+    }
+
+
+    async check(
+        id: number,
+        answers: number[],
+        withReview: boolean
+    ) {
+        let question = await this.findById(id)
+
+        let validAnswers = question.answers.filter(
+            a => answers.some(answer => answer === a.id)
+        )
+
+        let percentage = (validAnswers.length / question.answers.length) * 100
+
+        if (!withReview) {
+            return percentage
+        }
+
+        return {
+            question: question,
+            percentage: percentage,
+            validAnswers: validAnswers
+        }
     }
 
 

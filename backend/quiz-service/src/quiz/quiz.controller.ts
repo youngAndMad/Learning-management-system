@@ -1,4 +1,14 @@
-import {Body, ClassSerializerInterceptor, Controller, Delete, Param, Post, UseInterceptors} from '@nestjs/common';
+import {
+    Body,
+    ClassSerializerInterceptor,
+    Controller,
+    Delete,
+    Get,
+    Param, Patch,
+    Post,
+    Query,
+    UseInterceptors
+} from '@nestjs/common';
 import {QuizService} from "./quiz.service";
 import {QuizDTO} from "./quiz.dto";
 
@@ -21,6 +31,21 @@ export class QuizController {
     @Delete(':id')
     async delete(@Param('id') id: number) {
         return this.quizService.delete(id)
+    }
+
+    @Get(':id')
+    async find(@Param('id') id: number) {
+        return this.quizService.find(id)
+    }
+
+    @Get()
+    async findByName(@Query('name') name: string) {
+        return this.quizService.search(name)
+    }
+
+    @Patch(':id')
+    async update(@Param('id') id: number, @Body() quizDTO: QuizDTO) {
+        return this.quizService.update(id, quizDTO)
     }
 
 
