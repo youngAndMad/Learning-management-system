@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {Answer} from "./answer.entity";
 import {Repository} from "typeorm";
@@ -25,11 +25,27 @@ export class AnswerService {
         question: Question
     ) {
         let answer = plainToClass(Answer, answerDTO)
-        console.log(answer)
+
         answer.question = question
 
         return await this.answerRepository.save(answer)
     }
 
+    async update(
+        id: number, answerDTO: AnswerDTO
+    ) {
+        let answer = await this.answerRepository.findOne({where: {'id': id}})
 
+        if (!answer) {
+            throw new NotFoundException(`answer by id: ${id} not found`);
+        }
+
+        answer.isCorrect = answerDTO.isCorrect
+        answer.value = answerDTO.value
+
+        await this.answerRepository.update(id, {
+            isCorrect: answerDTO.isCorrect,
+            value: answerDTO.value
+        })
+    }
 }
