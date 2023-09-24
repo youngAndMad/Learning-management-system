@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm';
-import {Question} from "../question/Question.entity";
+import {Question} from "../question/question.entity";
 
 @Entity()
 export class Quiz {
