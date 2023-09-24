@@ -29,22 +29,31 @@ export class QuizController {
     }
 
     @Delete(':id')
-    async delete(@Param('id') id: number) {
+    async delete(
+        @Param('id') id: number
+    ) {
         return this.quizService.delete(id)
     }
 
     @Get(':id')
-    async find(@Param('id') id: number) {
+    async find(
+        @Param('id') id: number
+    ) {
         return this.quizService.find(id)
     }
 
     @Get()
-    async findByName(@Query('name') name: string) {
+    async findByName(
+        @Query('name') name: string
+    ) {
         return this.quizService.search(name)
     }
 
     @Patch(':id')
-    async update(@Param('id') id: number, @Body() quizDTO: QuizDTO) {
+    async update(
+        @Param('id') id: number,
+        @Body() quizDTO: QuizDTO
+    ) {
         return this.quizService.update(id, quizDTO)
     }
 

@@ -5,7 +5,7 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {QuizModule} from './quiz/quiz.module';
 import {AnswerModule} from './answer/answer.module';
 import {QuestionModule} from './question/question.module';
-import { ReviewModule } from './review/review.module';
+import {ReviewModule} from './review/review.module';
 
 @Module({
         imports: [TypeOrmModule.forRoot({
@@ -18,7 +18,10 @@ import { ReviewModule } from './review/review.module';
             synchronize: true,
             autoLoadEntities: true,
         },),
-            QuizModule, AnswerModule, QuestionModule, ReviewModule
+            QuizModule,
+            AnswerModule,
+            QuestionModule,
+            ReviewModule
         ],
         controllers: [AppController],
         providers: [AppService],
