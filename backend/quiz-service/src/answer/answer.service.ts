@@ -4,6 +4,7 @@ import {Answer} from "./answer.entity";
 import {Repository} from "typeorm";
 import {plainToClass} from 'class-transformer';
 import {AnswerDTO} from "./answer.dto";
+import {Question} from "../question/question.entity";
 
 @Injectable()
 export class AnswerService {
@@ -20,9 +21,12 @@ export class AnswerService {
     }
 
     async create(
-        answerDTO: AnswerDTO
+        answerDTO: AnswerDTO,
+        question: Question
     ) {
         let answer = plainToClass(Answer, answerDTO)
+        console.log(answer)
+        answer.question = question
 
         return await this.answerRepository.save(answer)
     }

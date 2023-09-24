@@ -10,12 +10,10 @@ export class QuizDTO {
     readonly questions: QuestionDTO[];
 
     @IsBoolean()
-    readonly reviewIsPermitted: boolean;
+    readonly reviewPermitted: boolean;
 
-    @IsDate()
     readonly start: Date;
 
-    @IsDate()
     readonly end: Date;
 
     @IsNumber()

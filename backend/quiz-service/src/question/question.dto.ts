@@ -10,5 +10,4 @@ export class QuestionDTO{
     @IsNotEmpty()
     readonly answers : AnswerDTO[];
 
-    
 }
