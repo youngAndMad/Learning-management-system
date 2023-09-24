@@ -10,7 +10,10 @@ export class Quiz {
     @Column()
     public name: string;
 
-    @OneToMany(() => Question, (question: Question) => question.quiz)
+    @OneToMany(() => Question,
+        (question: Question) => question.quiz,
+        {cascade: true}
+    )
     public questions: Question [];
 
     @Column()

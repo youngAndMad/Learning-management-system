@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {Question} from "./question.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
@@ -41,5 +41,21 @@ export class QuestionService {
 
         return await this.questionRepository.save(question)
     }
+
+    async update(
+        id: number,
+        value: string
+    ) {
+        let question = await this.questionRepository.findOneBy({id})
+
+        if (!question) {
+            throw new NotFoundException(`question by id ${id} not found`)
+        }
+
+        question.value = value
+
+        return this.questionRepository.save(question)
+    }
+
 
 }

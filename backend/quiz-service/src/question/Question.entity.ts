@@ -10,14 +10,21 @@ export class Question {
     @PrimaryGeneratedColumn()
     public id: number;
 
-    @ManyToOne(() => Quiz, (quiz: Quiz) => quiz.questions)
-    @Exclude({toPlainOnly:true})
+    @ManyToOne(
+        () => Quiz,
+        (quiz: Quiz) => quiz.questions
+    )
+    @Exclude({toPlainOnly: true})
     public quiz: Quiz;
 
     @Column()
     public value: string;
 
-    @OneToMany(() => Answer, (answer: Answer) => answer.question)
+    @OneToMany(
+        () => Answer,
+        (answer: Answer) => answer.question,
+        {cascade: true, lazy: false}
+    )
     public answers: Answer[];
 
 }
